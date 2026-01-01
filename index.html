@@ -1,80 +1,297 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Lucas Gregory | Portfólio</title>
-  <link rel="stylesheet" href="style.css">
+
+  <!-- Fonte -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --bg: #0b0b0f;
+      --card: #15151f;
+      --primary: #7c7cff;
+      --text: #e5e5e5;
+      --muted: #9a9a9a;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Inter', sans-serif;
+    }
+
+    body {
+      background: radial-gradient(circle at top, #121220, #000);
+      color: var(--text);
+      scroll-behavior: smooth;
+    }
+
+    header {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 40px;
+    }
+
+    header h1 {
+      font-size: clamp(2.5rem, 5vw, 4rem);
+      font-weight: 800;
+    }
+
+    header h1 span {
+      color: var(--primary);
+    }
+
+    header p {
+      max-width: 600px;
+      margin-top: 20px;
+      font-size: 1.1rem;
+      color: var(--muted);
+    }
+
+    .scroll-indicator {
+      margin-top: 60px;
+      animation: bounce 2s infinite;
+      opacity: 0.6;
+    }
+
+    @keyframes bounce {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(10px); }
+    }
+
+    section {
+      padding: 100px 10%;
+    }
+
+    h2 {
+      font-size: 2.5rem;
+      margin-bottom: 50px;
+      position: relative;
+    }
+
+    h2::after {
+      content: "";
+      width: 60px;
+      height: 4px;
+      background: var(--primary);
+      position: absolute;
+      bottom: -15px;
+      left: 0;
+    }
+
+    /* SOBRE */
+    .about {
+      max-width: 800px;
+      color: var(--muted);
+      font-size: 1.1rem;
+      line-height: 1.7;
+    }
+
+    /* CARDS */
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 30px;
+    }
+
+    .card {
+      background: linear-gradient(145deg, #171726, #0f0f19);
+      border-radius: 20px;
+      padding: 30px;
+      transition: transform 0.4s, box-shadow 0.4s;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .card::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at top, rgba(124,124,255,0.15), transparent 60%);
+      opacity: 0;
+      transition: opacity 0.4s;
+    }
+
+    .card:hover::before {
+      opacity: 1;
+    }
+
+    .card:hover {
+      transform: translateY(-10px) scale(1.02);
+      box-shadow: 0 20px 40px rgba(0,0,0,0.6);
+    }
+
+    .card h3 {
+      font-size: 1.4rem;
+      margin-bottom: 10px;
+    }
+
+    .card p {
+      font-size: 0.95rem;
+      color: var(--muted);
+      margin-bottom: 15px;
+    }
+
+    .tag {
+      display: inline-block;
+      font-size: 0.75rem;
+      padding: 5px 10px;
+      border-radius: 20px;
+      background: rgba(124,124,255,0.15);
+      color: var(--primary);
+      margin-right: 5px;
+    }
+
+    /* FUTUROS PROJETOS */
+    .future {
+      opacity: 0.85;
+      border: 1px dashed rgba(124,124,255,0.4);
+    }
+
+    /* CONTATO */
+    .contact {
+      text-align: center;
+    }
+
+    .contact a {
+      display: inline-block;
+      margin-top: 20px;
+      padding: 14px 30px;
+      border-radius: 30px;
+      background: var(--primary);
+      color: #000;
+      font-weight: 600;
+      text-decoration: none;
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+
+    .contact a:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 30px rgba(124,124,255,0.5);
+    }
+
+    footer {
+      padding: 30px;
+      text-align: center;
+      font-size: 0.85rem;
+      color: var(--muted);
+      background: #000;
+    }
+
+    /* ANIMAÇÃO SCROLL */
+    .reveal {
+      opacity: 0;
+      transform: translateY(50px);
+      transition: 0.8s ease;
+    }
+
+    .reveal.active {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  </style>
 </head>
 <body>
 
 <header>
-  <h1>Lucas Gregory</h1>
-  <p>Estudante de Tecnologia • Desenvolvedor em formação</p>
+  <h1>Lucas <span>Gregory</span></h1>
+  <p>Desenvolvedor em constante evolução, apaixonado por tecnologia, interfaces modernas e experiências interativas.</p>
+  <div class="scroll-indicator">⬇</div>
 </header>
 
 <section>
-  <h2>Sobre mim</h2>
-  <p>
-    Sou estudante de Ciências da Computação, com interesse em
-    desenvolvimento web e programação. Busco minha primeira oportunidade
-    profissional para aplicar meus conhecimentos, aprender na prática
-    e evoluir como desenvolvedor.
-  </p>
-</section>
-
-<section>
-  <h2>Objetivo Profissional</h2>
-  <p>
-    Atuar como estagiário ou desenvolvedor júnior na área de tecnologia,
-    contribuindo com soluções eficientes e ampliando meus conhecimentos
-    técnicos e profissionais.
-  </p>
-</section>
-
-<section>
-  <h2>Habilidades Técnicas</h2>
-  <ul>
-    <li>HTML5 e CSS3</li>
-    <li>JavaScript (nível básico)</li>
-    <li>Python (nível básico)</li>
-    <li>C# (nível básico)</li>
-    <li>Postman testes de API</li>
-    <li>Lógica de Programação</li>
-    <li>Git e GitHub</li>
-    <li>Linux (Ubuntu,Kali e Suse), Windows e MacOS</li>
-    <li>Noções de Redes e Sistemas CRM, ERP, PDV entre outros</li>
-  </ul>
-</section>
-
-<section>
-  <h2>Formação</h2>
-  <p>
-    Faço o curso de Ciências da Computação.<br>
-    <strong>Status:</strong> Em andamento
+  <h2>Sobre Mim</h2>
+  <p class="about reveal">
+    Sou desenvolvedor focado em front-end e experiências visuais, criando projetos com HTML, CSS e JavaScript.
+    Busco sempre aprender novas tecnologias e transformar ideias em interfaces bonitas, funcionais e eficientes.
   </p>
 </section>
 
 <section>
   <h2>Projetos</h2>
-  <ul>
-    <li>Portfólio pessoal em HTML e CSS</li>
-    <li>Calculadora simples em JavaScript</li>
-    <button>Calculadora</button>
-    <button onclick="window.location.href='https://luucasgregory.github.io/Calculadora/'">Acessar Calculadora</button>
-    <li>Estudos com Git e GitHub</li>
-  </ul>
+  <div class="grid">
+    <div class="card reveal">
+      <h3>Sistema Solar 2D</h3>
+      <p>Simulação animada com órbitas, iluminação do sol e contagem de dias.</p>
+      <span class="tag">HTML</span>
+      <span class="tag">Canvas</span>
+      <span class="tag">JS</span>
+    </div>
+
+    <div class="card reveal">
+      <h3>Tempestade Oceânica</h3>
+      <p>Ondas realistas, navio lutando contra a tempestade, relâmpagos e chuva.</p>
+      <span class="tag">Canvas</span>
+      <span class="tag">Animação</span>
+    </div>
+
+    <div class="card reveal">
+      <h3>Árvore Fractal</h3>
+      <p>Ciclo completo de crescimento, estações do ano e renascimento.</p>
+      <span class="tag">Algoritmos</span>
+      <span class="tag">JS</span>
+    </div>
+  </div>
 </section>
 
 <section>
+  <h2>Futuros Projetos</h2>
+  <div class="grid">
+    <div class="card future reveal">
+      <h3>Dashboard Interativo</h3>
+      <p>Status: Em desenvolvimento</p>
+      <span class="tag">UI</span>
+      <span class="tag">JS</span>
+    </div>
+
+    <div class="card future reveal">
+      <h3>To-Do App Avançado</h3>
+      <p>Status: Planejamento</p>
+      <span class="tag">React</span>
+      <span class="tag">UX</span>
+    </div>
+
+    <div class="card future reveal">
+      <h3>Clone de Interface</h3>
+      <p>Status: Ideia inicial</p>
+      <span class="tag">Front-end</span>
+    </div>
+  </div>
+</section>
+
+<section class="contact">
   <h2>Contato</h2>
-  <p>Email: lucasgregory22@gmail.com</p>
-  <p>GitHub: github.com/LuucasGregory</p>
-  <p>LinkedIn: linkedin.com/in/lucasgregorypytonmaniac</p>
+  <p class="reveal">Quer conversar ou ver mais do meu trabalho?</p>
+  <a href="https://github.com/" target="_blank">Meu GitHub</a>
 </section>
 
 <footer>
-  <p>© 2025 - Lucas Gregory</p>
+  © 2026 • Lucas Gregory • Portfólio
 </footer>
+
+<script>
+  const reveals = document.querySelectorAll(".reveal");
+
+  function revealOnScroll() {
+    reveals.forEach(el => {
+      const top = el.getBoundingClientRect().top;
+      if (top < window.innerHeight - 100) {
+        el.classList.add("active");
+      }
+    });
+  }
+
+  window.addEventListener("scroll", revealOnScroll);
+  revealOnScroll();
+</script>
 
 </body>
 </html>
